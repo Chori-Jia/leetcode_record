@@ -1,0 +1,35 @@
+Title :Distrbuting candies
+Method:
+  1.Always distributing candy until it run out.
+  2.Useing arithmetic.
+Way 1:
+package List;
+
+import java.util.Arrays;
+
+/**
+ * 暴力解
+ * @author OrangeGirl
+ *
+ */
+public class distributeCandies1103_02 {
+    public static int[] distributeCandies(int candies, int num_people) {
+    	int[] num = new int[num_people];
+    	int i = 0;
+    	while(candies!=0) {
+    		//每次分多少？Math.min(candies, i+1)
+    		num[i%num_people] += Math.min(candies, i+1);
+    		candies -= Math.min(candies, i+1);
+    		i++;
+    	}
+    	
+    	return num;
+    }
+    public static void main(String[] args) {
+		int candies = 10;
+		int people = 3;
+		int[] arr = new int[3];
+		arr = distributeCandies(candies,3);
+		System.out.println(Arrays.toString(arr));
+	}
+}
